@@ -41,76 +41,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="aba-conteudo">
-                    <h3 class="aba-conteudo-titulo-principal">Criar 5 projetos em Javascript</h3>
-                    <h4 class="aba-conteudo-titulo-secundario">Tempo para completar o objetivo</h4>
-                    <div class="contador">
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="dias1"></p>
-                            <p class="contador-digito-texto">dias</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="horas1"></p>
-                            <p class="contador-digito-texto">horas</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="min1"></p>
-                            <p class="contador-digito-texto">min</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="seg1"></p>
-                            <p class="contador-digito-texto">seg</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="aba-conteudo">
-                    <h3 class="aba-conteudo-titulo-principal">Criar um portfolio com os meus 3 melhores projetos</h3>
-                    <h4 class="aba-conteudo-titulo-secundario">Tempo para completar o objetivo</h4>
-                    <div class="contador">
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="dias2"></p>
-                            <p class="contador-digito-texto">dias</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="horas2"></p>
-                            <p class="contador-digito-texto">horas</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="min2"></p>
-                            <p class="contador-digito-texto">min</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="seg2"></p>
-                            <p class="contador-digito-texto">seg</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="aba-conteudo">
-                    <h3 class="aba-conteudo-titulo-principal">Atualizar meu curriculo com os certificados da Alura</h3>
-                    <h4 class="aba-conteudo-titulo-secundario">Tempo para completar o objetivo</h4>
-                    <div class="contador">
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="dias3"></p>
-                            <p class="contador-digito-texto">dias</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="horas3"></p>
-                            <p class="contador-digito-texto">horas</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="min3"></p>
-                            <p class="contador-digito-texto">min</p>
-                        </div>
-                        <div class="contador-digito">
-                            <p class="contador-digito-numero" id="seg3"></p>
-                            <p class="contador-digito-texto">seg</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Outras abas -->
             </div>
         </div>
     </section>
-    <script src="main.js"></script>
+    <script>
+        // Configurar a data para o Ano Novo (1º de janeiro de 2026)
+        const dataAlvo = new Date("January 1, 2026 00:00:00").getTime();
+
+        // Atualizar o contador a cada 1 segundo
+        const x = setInterval(function() {
+            const agora = new Date().getTime();
+            const distancia = dataAlvo - agora;
+
+            // Cálculo dos dias, horas, minutos e segundos restantes
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Exibir os valores no HTML
+            document.getElementById("dias269").innerHTML = dias;
+            document.getElementById("horas0").innerHTML = horas;
+            document.getElementById("min0").innerHTML = minutos;
+            document.getElementById("seg0").innerHTML = segundos;
+
+            // Se o tempo acabar, exibir mensagem
+            if (distancia < 0) {
+                clearInterval(x);
+                document.getElementById("dias269").innerHTML = 0;
+                document.getElementById("horas0").innerHTML = 0;
+                document.getElementById("min0").innerHTML = 0;
+                document.getElementById("seg0").innerHTML = 0;
+                alert("Feliz Ano Novo!");
+            }
+        }, 1000);
+    </script>
 </body>
 
 </html>
